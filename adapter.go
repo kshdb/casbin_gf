@@ -11,10 +11,11 @@ import (
 	"github.com/casbin/casbin/v2/persist"
 	_ "github.com/gogf/gf/contrib/drivers/mysql/v2"
 	"github.com/gogf/gf/v2/database/gdb"
+	_ "github.com/logoove/go/sqlite"
 )
 
 const (
-	defaultTableName     = "casbin_policy"
+	defaultTableName     = "ks_casbin_rule"
 	dropPolicyTableSql   = `DROP TABLE IF EXISTS %s`
 	createPolicyTableSql = `
 CREATE TABLE IF NOT EXISTS %s (
@@ -102,8 +103,7 @@ func (a *adapter) model() *gdb.Model {
 
 // create a policy table when it's not exists.
 func (a *adapter) createPolicyTable() (err error) {
-	_, err = a.db.Exec(context.TODO(), fmt.Sprintf(createPolicyTableSql, a.table))
-
+	//_, err = a.db.Exec(context.TODO(), fmt.Sprintf(createPolicyTableSql, a.table))
 	return
 }
 
